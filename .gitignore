@@ -1,0 +1,19 @@
+# Ignore arquivos de ambiente e cache do Python
+*.pyc
+__pycache__/
+.env
+
+# Ignore o diretório de configuração do Django
+*/settings.py
+
+# Ignore arquivos de mídia e static
+media/
+static/
+
+# Ignore arquivos de build do JavaScript (exemplo com webpack)
+/dist/
+/node_modules/
+
+# Ignore qualquer arquivo de log ou backup
+*.log
+*.bak
