@@ -24,7 +24,7 @@ class Idoso_Dados(models.Model):
     bairro = models.CharField(max_length=50)
     cep = models.CharField(max_length=8)
     rg = models.CharField(max_length=9)
-    cpf = models.CharField(max_length=11)
+    cpf = models.CharField(max_length=11, unique=True)
     cartao_cns = models.CharField(max_length=15)
     plano_saude = models.BooleanField()
     plano_saude_qual = models.CharField(max_length=50, blank=True, null=True)  # Adicione blank=True, null=True se plano_saude for False
@@ -48,4 +48,87 @@ class Idoso_Dados(models.Model):
     
     def __str__(self):
         return self.nome
-   
+
+class Pre_Intervencao(models.Model):
+    user = models.ForeignKey(Idoso_Dados, on_delete=models.CASCADE, to_field='cpf')
+    data = models.DateField()
+
+    pas_1 = models.CharField(max_length=7)
+    pad_1 = models.CharField(max_length=7)
+    pas_2 = models.CharField(max_length=7)
+    pad_2 = models.CharField(max_length=7)
+    pas_3 = models.CharField(max_length=7)
+    pad_3 = models.CharField(max_length=7)
+
+    frequencia_card = models.PositiveSmallIntegerField()
+    saturacao_oxg = models.PositiveSmallIntegerField()
+    
+    QUALIDADE_SONO_CHOICE = [
+        ('Muito ruim', 'Muito ruim'),
+        ('Ruim', 'Ruim'),
+        ('Regular', 'Regular'),
+        ('Bom', 'Bom'),
+        ('Muito bom', 'Muito bom'),
+    ]
+    qualidade_sono = models.CharField(
+        max_length=10,
+        choices=QUALIDADE_SONO_CHOICE
+    )
+
+    BEM_ESTAR_CHOICES = [
+        ('Muito ruim', 'Muito ruim'),
+        ('Ruim', 'Ruim'),
+        ('Regular', 'Regular'),
+        ('Bom', 'Bom'),
+        ('Muito bom', 'Muito bom'),
+    ]
+    bem_estar = models.CharField(
+        max_length=10,
+        choices=BEM_ESTAR_CHOICES
+    )
+
+    DOR_CHOICES = [
+        ('Sem dor', 'Sem dor'),
+        ('Dor leve', 'Dor leve'),
+        ('Dor moderada', 'Dor moderada'),
+        ('Dor intensa', 'Dor intensa'),
+        ('Pior dor possível', 'Pior dor possível'),
+    ]
+    pain = models.CharField(
+        max_length=20,
+        choices=DOR_CHOICES
+    )
+
+    def __str__(self):
+        return f"{self.user.nome} - {self.data}"
+
+class Pos_Intervencao(models.Model):
+    user = models.ForeignKey(Idoso_Dados, on_delete=models.CASCADE, to_field='cpf')
+    data = models.DateField()
+
+    pas_1 = models.CharField(max_length=7)
+    pad_1 = models.CharField(max_length=7)
+    pas_2 = models.CharField(max_length=7)
+    pad_2 = models.CharField(max_length=7)
+    pas_3 = models.CharField(max_length=7)
+    pad_3 = models.CharField(max_length=7)
+
+    frequencia_card = models.PositiveSmallIntegerField()
+    saturacao_oxg = models.PositiveSmallIntegerField()
+    tempo_cam = models.DurationField()
+
+    ESFORCO_CHOICES = [
+        ('1', '1'),
+        ('2', '2'),
+        ('3', '3'),
+        ('4', '4'),
+        ('5', '5'),
+    ]
+    esforco = models.CharField(
+        max_length=1,
+        choices=ESFORCO_CHOICES
+    )
+    def __str__(self):
+        return f"{self.user.nome} - {self.data}"   
+
+
