@@ -1,6 +1,6 @@
 from django.urls import path
 from .auth import views_auth
-from .Idoso_Atividades import views_idoso
+from .Idoso_Atividades import views_idoso, views_intervencao
 
 urlpatterns = [
     path('user_admin/',views_auth.User_AdminListCreate.as_view(), name="user_admin_list_create"),
@@ -12,5 +12,7 @@ urlpatterns = [
     path('idosos_dados/cadastrar', views_idoso.Idoso_DadosListCreate.as_view(), name="idoso_dados_cadastrar"),
     path('idosos_dados/<int:pk>/', views_idoso.Idoso_DadosRetrieveUpdateDestroy.as_view(), name="idoso_dados_retrieve_update_destroy"),
     path('idosos_dados/list/', views_idoso.Idoso_DadosList.as_view(), name='idosos_dados_list'),
+    path('idoso/pre_intervencao/', views_intervencao.Pre_IntervencaoListCreate.as_view(), name="idoso_pre_intervencao"),
+    path('idoso/pos_intervencao/', views_intervencao.Pos_IntervencaoListCreate.as_view(), name='idoso_pos_intervencao'),
 ]
 
