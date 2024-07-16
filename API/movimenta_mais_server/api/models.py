@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import timedelta
 
  #info dos users
 class User_Admin(models.Model):
@@ -101,7 +102,20 @@ class Atendimento(models.Model):
     )
 
     def __str__(self):
-        return f"{self.user.nome} - {self.data}"
+        return f"{self.cpf_idoso.nome} - {self.data}"
+
+class Treino(models.Model):
+    cpf_idoso = models.ForeignKey(Idoso_Dados, on_delete=models.CASCADE, to_field='cpf')
+    data = models.DateField()
+
+    treino_pres = models.CharField(max_length=20)
+    tempo_pres = models.PositiveSmallIntegerField()
+    distancia_pres = models.PositiveSmallIntegerField()
+    tempo_exec = models.PositiveSmallIntegerField()
+    distancia_exec = models.FloatField()
+
+    def __str__(self):
+        return f"{self.cpf_idoso.nome} - {self.data}"
 
 
 
