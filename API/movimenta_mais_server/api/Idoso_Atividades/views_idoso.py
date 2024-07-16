@@ -42,7 +42,7 @@ class Idoso_DadosRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-# Lista usuários e admin
+# Lista dos Dados do Idosos
 class Idoso_DadosList(APIView):
     def get(self, request, format=None):
         """Retorna uma lista de usuários"""

@@ -49,8 +49,9 @@ class Idoso_Dados(models.Model):
     def __str__(self):
         return self.nome
 
-class Pre_Intervencao(models.Model):
-    user = models.ForeignKey(Idoso_Dados, on_delete=models.CASCADE, to_field='cpf')
+
+class Atendimento(models.Model):
+    cpf_idoso = models.ForeignKey(Idoso_Dados, on_delete=models.CASCADE, to_field='cpf')
     data = models.DateField()
 
     pas_1 = models.CharField(max_length=7)
@@ -102,33 +103,5 @@ class Pre_Intervencao(models.Model):
     def __str__(self):
         return f"{self.user.nome} - {self.data}"
 
-class Pos_Intervencao(models.Model):
-    user = models.ForeignKey(Idoso_Dados, on_delete=models.CASCADE, to_field='cpf')
-    data = models.DateField()
-
-    pas_1 = models.CharField(max_length=7)
-    pad_1 = models.CharField(max_length=7)
-    pas_2 = models.CharField(max_length=7)
-    pad_2 = models.CharField(max_length=7)
-    pas_3 = models.CharField(max_length=7)
-    pad_3 = models.CharField(max_length=7)
-
-    frequencia_card = models.PositiveSmallIntegerField()
-    saturacao_oxg = models.PositiveSmallIntegerField()
-    tempo_cam = models.DurationField()
-
-    ESFORCO_CHOICES = [
-        ('1', '1'),
-        ('2', '2'),
-        ('3', '3'),
-        ('4', '4'),
-        ('5', '5'),
-    ]
-    esforco = models.CharField(
-        max_length=1,
-        choices=ESFORCO_CHOICES
-    )
-    def __str__(self):
-        return f"{self.user.nome} - {self.data}"   
 
 
