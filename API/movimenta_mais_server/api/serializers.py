@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import  Treino, User_Admin, Idoso_Dados, Atendimento, Exame
+from .models import  Treino, User_Admin, Idoso_Dados, Atendimento,Avaliacao, Exame
 
 #Converte Pra JSON
 
@@ -27,6 +27,12 @@ class TreinoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Treino
         fields = "__all__"      
+
+class AvaliacaoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Avaliacao
+        fields = "__all__"
+
 
 class ExameSerializer(serializers.ModelSerializer):
     class Meta:

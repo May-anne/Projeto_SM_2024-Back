@@ -3,7 +3,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from .auth import views_auth
-from .Idoso_Atividades import views_atendimento, views_idoso, views_treino
+from .Idoso_Atividades import views_atendimento, views_idoso, views_treino,views_avaliacao
 from .Docs import views_exams
 
 urlpatterns = [
@@ -23,7 +23,15 @@ urlpatterns = [
     path('idosos_dados/treino/create/', views_treino.TreinoCreateAPIView.as_view(), name='treino_create'),
     path('idosos_dados/treino/<int:pk>/', views_treino.TreinoRetrieverUpdateDestory.as_view(), name='treino_retrieve_update_destroy'),
     path('idosos_dados/treino/listar/', views_treino.TreinoList.as_view(), name='treino_listar'),
+    path('idosos_dados/avaliacao/create/', views_avaliacao.AvaliacaoCreateAPIView.as_view(), name='avaliacao_criar'),
+    path('idosos_dados/avaliacao/listar/', views_avaliacao.AvaliacaoList.as_view(), name='avaliacao_listar'),
+    path('idosos_dados/avaliacao/<int:pk>', views_avaliacao.AvaliacaoRetrieverUpdateDestory.as_view(), name='avaliacao_deletar_editar'),
+    
     # Paths de Docs
     path('docs/exame/upload', views_exams.upload_exame_view, name='upload_exame'),
     path('docs/exame/lista', views_exams.ExameListByCPF.as_view(), name='upload_lista'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    
+    
+]
+]

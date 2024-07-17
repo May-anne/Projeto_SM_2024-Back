@@ -118,6 +118,26 @@ class Treino(models.Model):
     def __str__(self):
         return f"{self.cpf_idoso.nome} - {self.data}"
 
+class Avaliacao(models.Model):
+    cpf_idoso = models.ForeignKey(Idoso_Dados, on_delete=models.CASCADE, to_field='cpf')
+    data = models.DateField()
+    peso = models.FloatField()
+    estatura = models.FloatField()
+    per_cintura = models.FloatField()
+    per_quadril = models.FloatField()
+    per_panturrilha = models.FloatField()
+    marcha6 = models.FloatField()
+    hg_direita1 = models.FloatField()
+    hg_esquerda1 = models.FloatField()
+    hg_direita2 = models.FloatField()
+    hg_esquerda2 = models.FloatField()
+    ir_vir1 = models.FloatField()
+    ir_vir2 = models.FloatField()
+
+    def __str__(self):
+        return f"{self.cpf_idoso.nome} - {self.data}"
+    
+
 #Tabela de Exames
 class Exame(models.Model):
     cpf_idoso = models.ForeignKey(Idoso_Dados, on_delete=models.CASCADE, to_field='cpf')
@@ -127,6 +147,5 @@ class Exame(models.Model):
 
     def __str__(self):
         return f"{self.cpf_idoso.nome} - {self.uploaded_at}"
-    
-    
- 
+
+
