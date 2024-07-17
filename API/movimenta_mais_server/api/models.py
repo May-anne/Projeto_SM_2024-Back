@@ -10,7 +10,7 @@ class User_Admin(models.Model):
     def __str__(self):
         return self.nome
     
-#Info de cadastro dos idosos 
+#Tabela Info de Idoso
 class Idoso_Dados(models.Model):
     nome = models.CharField(max_length=100)
     data_nascimento = models.DateField()
@@ -50,7 +50,7 @@ class Idoso_Dados(models.Model):
     def __str__(self):
         return self.nome
 
-
+#Tabela de Atendimento
 class Atendimento(models.Model):
     cpf_idoso = models.ForeignKey(Idoso_Dados, on_delete=models.CASCADE, to_field='cpf')
     data = models.DateField()
@@ -104,6 +104,7 @@ class Atendimento(models.Model):
     def __str__(self):
         return f"{self.cpf_idoso.nome} - {self.data}"
 
+#Tabela para treino
 class Treino(models.Model):
     cpf_idoso = models.ForeignKey(Idoso_Dados, on_delete=models.CASCADE, to_field='cpf')
     data = models.DateField()
@@ -117,5 +118,15 @@ class Treino(models.Model):
     def __str__(self):
         return f"{self.cpf_idoso.nome} - {self.data}"
 
+#Tabela de Exames
+class Exame(models.Model):
+    cpf_idoso = models.ForeignKey(Idoso_Dados, on_delete=models.CASCADE, to_field='cpf')
+    title = models.CharField(max_length=255)
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+    file = models.FileField(upload_to='documents/')
 
-
+    def __str__(self):
+        return f"{self.cpf_idoso.nome} - {self.uploaded_at}"
+    
+    
+ 
