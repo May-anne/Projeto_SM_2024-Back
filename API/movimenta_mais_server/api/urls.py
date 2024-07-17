@@ -1,7 +1,7 @@
 from django.urls import path
 
 from .auth import views_auth
-from .Idoso_Atividades import views_atendimento, views_idoso, views_treino
+from .Idoso_Atividades import views_atendimento, views_idoso, views_treino, views_avaliacao
 
 urlpatterns = [
     path('user_admin/', views_auth.User_AdminListCreate.as_view(), name="user_admin_list_create"),
@@ -20,4 +20,8 @@ urlpatterns = [
     path('idosos_dados/treino/create/', views_treino.TreinoCreateAPIView.as_view(), name='treino_create'),
     path('idosos_dados/treino/<int:pk>/', views_treino.TreinoRetrieverUpdateDestory.as_view(), name='treino_retrieve_update_destroy'),
     path('idosos_dados/treino/listar/', views_treino.TreinoList.as_view(), name='treino_listar'),
+    #avaliação
+    path('idosos_dados/avaliacao/create/', views_avaliacao.AvaliacaoCreateAPIView.as_view(), name='avaliacao_criar'),
+    path('idosos_dados/avaliacao/listar/', views_avaliacao.AvaliacaoList.as_view(), name='avaliacao_listar'),
+    path('idosos_dados/avaliacao/<int:pk>', views_avaliacao.AvaliacaoRetrieverUpdateDestory.as_view(), name='avaliacao_deletar_editar'),
 ]
