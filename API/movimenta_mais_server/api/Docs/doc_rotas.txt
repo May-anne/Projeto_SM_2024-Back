@@ -1,0 +1,358 @@
+#ROTAS Auth
+
+    -Criar User
+        {
+            url: 'http:localhost:127.0.0.1:8000/api/user_admin/'
+            method: Post
+            body{
+                "nome":
+                "senha":
+            }          
+        }
+    - Ver User:
+        {
+            url: 'http:localhost:127.0.0.1:8000/api/user_admin/<int:pk>/'
+            method: Get
+            body{
+                "nome": 
+                "senha":
+            }          
+        }
+    - Editar:
+        {
+            url: 'http:localhost:127.0.0.1:8000/api/user_admin/list/'
+            method: Put
+            body{
+                "nome":
+                "senha":
+            }          
+        }
+    - Logar:
+        {
+            url: 'http:localhost:127.0.0.1:8000/api/signin/'
+            method: Get
+            body{
+                "nome":
+                "senha":
+            }          
+        }
+
+#ROTAS idosos_dados
+
+    -Cadastrar
+            {
+            url: 'http:localhost:127.0.0.1:8000/api/idosos_dados/cadastrar/'
+            method: Post
+            body{
+                "nome" = 
+                "data_nascimento" = "datetime"
+                "sexo" = "F/M"
+                "raca" = 
+                "escolaridade" = 
+                "deficiencia" = 
+                "deficiencia_quais" = 
+                "telefone_pessoal" = [SÓ NÚMERO em String]
+                "telefone_emergencial" = [SÓ NÚMERO em String] 
+                "endereco" = 
+                "bairro" = 
+                "cep" = [SÓ NÚMERO em String]
+                "rg" = [SÓ NÚMERO em String]
+                "cpf" = [SÓ NÚMERO em String]
+                "cartao_cns" = [SÓ NÚMERO em String]
+                "plano_saude" = 
+                "plano_saude_qual" = 
+                "onde_moras" = 
+                "com_quem_mora" = 
+                "quantos_residem" = [INT]
+                "meio_transporte" = 
+                "situacao_economica" = 
+                "renda" = [INT]
+                "problemas_saude" =  "True/False"
+                "problemas_saude_quais" = 
+                "cirgurgia_recente" = "True/False"
+                "cirurgia_quais" = 
+                "internacao_recente"= "True/False"
+                "internacao_quais" = 
+                "alcool" = "True/False"
+                "fumante" = "True/False"
+                "drogas" = "True/False"
+                "medicamentos" = "True/False"
+                "medicamentos_quais" = 
+                }          
+            }
+    - Editar:
+        {
+            url: 'http:localhost:127.0.0.1:8000/api/idosos_dados/<int:pk>/'
+            method: Put
+            body{
+                "nome" = 
+                "data_nascimento" = "datetime"
+                "sexo" = "F/M"
+                "raca" = 
+                "escolaridade" = 
+                "deficiencia" = 
+                "deficiencia_quais" = 
+                "telefone_pessoal" = [SÓ NÚMERO em String]
+                "telefone_emergencial" = [SÓ NÚMERO em String] 
+                "endereco" = 
+                "bairro" = 
+                "cep" = [SÓ NÚMERO em String]
+                "rg" = [SÓ NÚMERO em String]
+                "cpf" = [SÓ NÚMERO em String]
+                "cartao_cns" = [SÓ NÚMERO em String]
+                "plano_saude" = 
+                "plano_saude_qual" = 
+                "onde_moras" = 
+                "com_quem_mora" = 
+                "quantos_residem" = [INT]
+                "meio_transporte" = 
+                "situacao_economica" = 
+                "renda" = [INT]
+                "problemas_saude" =  "True/False"
+                "problemas_saude_quais" = 
+                "cirgurgia_recente" = "True/False"
+                "cirurgia_quais" = 
+                "internacao_recente"= "True/False"
+                "internacao_quais" = 
+                "alcool" = "True/False"
+                "fumante" = "True/False"
+                "drogas" = "True/False"
+                "medicamentos" = "True/False"
+                "medicamentos_quais" = 
+                }          
+            }
+        - Ver:
+        {
+            url: 'http:localhost:127.0.0.1:8000/api/idosos_dados/list/'
+            method: Get
+            body{
+                "nome" = 
+                "data_nascimento" = "datetime"
+                "sexo" = "F/M"
+                "raca" = 
+                "escolaridade" = 
+                "deficiencia" = 
+                "deficiencia_quais" = 
+                "telefone_pessoal" = [SÓ NÚMERO em String]
+                "telefone_emergencial" = [SÓ NÚMERO em String] 
+                "endereco" = 
+                "bairro" = 
+                "cep" = [SÓ NÚMERO em String]
+                "rg" = [SÓ NÚMERO em String]
+                "cpf" = [SÓ NÚMERO em String]
+                "cartao_cns" = [SÓ NÚMERO em String]
+                "plano_saude" = 
+                "plano_saude_qual" = 
+                "onde_moras" = 
+                "com_quem_mora" = 
+                "quantos_residem" = [INT]
+                "meio_transporte" = 
+                "situacao_economica" = 
+                "renda" = [INT]
+                "problemas_saude" =  "True/False"
+                "problemas_saude_quais" = 
+                "cirgurgia_recente" = "True/False"
+                "cirurgia_quais" = 
+                "internacao_recente"= "True/False"
+                "internacao_quais" = 
+                "alcool" = "True/False"
+                "fumante" = "True/False"
+                "drogas" = "True/False"
+                "medicamentos" = "True/False"
+                "medicamentos_quais" = 
+                }          
+        }
+
+    #ROTAS idosos_dados/atendimento:
+
+        -Criar:{
+            url: 'http:localhost:127.0.0.1:8000/api/idosos_dados/atendimento/criar/'
+            query_params: get : cpf
+            method: Post
+            body{
+                "cpf_idoso" = 
+                "data" = "datetime"
+                "pas_1" = 
+                "pas_2" = 
+                "pas_3" = 
+                "pad_1" = 
+                "pad_2" = 
+                "pad_3" = 
+                "frequencia_card" = 
+                "saturacao_oxg" = 
+                "qualidade_sono" = [
+                        ('Muito ruim', 'Muito ruim'),
+                        ('Ruim', 'Ruim'),
+                        ('Regular', 'Regular'),
+                        ('Bom', 'Bom'),
+                        ('Muito bom', 'Muito bom'),
+                    ],
+                "bem_estar" = [
+                        ('Muito ruim', 'Muito ruim'),
+                        ('Ruim', 'Ruim'),
+                        ('Regular', 'Regular'),
+                        ('Bom', 'Bom'),
+                        ('Muito bom', 'Muito bom'),
+                    ],
+                "pain" = [
+                        ('Sem dor', 'Sem dor'),
+                        ('Dor leve', 'Dor leve'),
+                        ('Dor moderada', 'Dor moderada'),
+                        ('Dor intensa', 'Dor intensa'),
+                        ('Pior dor possível', 'Pior dor possível'),
+                    ]
+
+                }          
+        }
+        -Ver:{
+                url: 'http:localhost:127.0.0.1:8000/api/idosos_dados/atendimento/lista/'
+                query_params: get : cpf
+                method: Get
+                body{
+                    "cpf_idoso" = 
+                    "data" = "datetime"
+                    "pas_1" = 
+                    "pas_2" = 
+                    "pas_3" = 
+                    "pad_1" = 
+                    "pad_2" = 
+                    "pad_3" = 
+                    "frequencia_card" = 
+                    "saturacao_oxg" = 
+                    "qualidade_sono" = [
+                            ('Muito ruim', 'Muito ruim'),
+                            ('Ruim', 'Ruim'),
+                            ('Regular', 'Regular'),
+                            ('Bom', 'Bom'),
+                            ('Muito bom', 'Muito bom'),
+                        ],
+                    "bem_estar" = [
+                            ('Muito ruim', 'Muito ruim'),
+                            ('Ruim', 'Ruim'),
+                            ('Regular', 'Regular'),
+                            ('Bom', 'Bom'),
+                            ('Muito bom', 'Muito bom'),
+                        ],
+                    "pain" = [
+                            ('Sem dor', 'Sem dor'),
+                            ('Dor leve', 'Dor leve'),
+                            ('Dor moderada', 'Dor moderada'),
+                            ('Dor intensa', 'Dor intensa'),
+                            ('Pior dor possível', 'Pior dor possível'),
+                        ]
+
+                    }          
+            }
+
+    #ROTAS idosos_dados/Treino:
+        -Criar:{
+            url: 'http:localhost:127.0.0.1:8000/api/idosos_dados/atendimento/criar/'
+            query_params: get : cpf
+            method: Post
+            body{
+                "cpf_idoso" = 
+                "data" = "datetime"
+                "treino_pres" = 
+                "tempo_pres" = 
+                "distancia_pres" = 
+                "tempo_exec" = 
+                "distancia_exec" =        
+                }          
+        }
+        -Editar:{
+            url: 'http:localhost:127.0.0.1:8000/api/idosos_dados/atendimento/criar/'
+            query_params: get : cpf
+            method: Put
+            body{
+                "cpf_idoso" = 
+                "data" = "datetime"
+                "treino_pres" = 
+                "tempo_pres" = 
+                "distancia_pres" = 
+                "tempo_exec" = 
+                "distancia_exec" =        
+                }          
+        }
+        -Ver:{
+            url: 'http:localhost:127.0.0.1:8000/api/idosos_dados/atendimento/criar/'
+            query_params: get : cpf
+            method: Get
+            body{
+                "cpf_idoso" = 
+                "data" = "datetime"
+                "treino_pres" = 
+                "tempo_pres" = 
+                "distancia_pres" = 
+                "tempo_exec" = 
+                "distancia_exec" =        
+                }          
+        }
+    #ROTAS idosos_dados/avaliacao: 
+        -Criar:{
+            url: 'http:localhost:127.0.0.1:8000/api/idosos_dados/atendimento/criar/'
+            query_params: get : cpf
+            method: Post
+            body{
+                "cpf_idoso" = 
+                "data" = "datetime"
+                "peso" = 
+                "estatura" = 
+                "per_cintura" = 
+                "per_quadril" = 
+                "per_panturrilha" =
+                "marcha6" = 
+                "hg_direita1" = 
+                "hg_esquerda1" = 
+                "hg_direita2" =
+                "hg_esquerda2" = 
+                "ir_vir1" = 
+                "ir_vir2" =         
+                }          
+        }
+        -Editar:{
+            url: 'http:localhost:127.0.0.1:8000/api/idosos_dados/atendimento/criar/'
+            query_params: get : cpf
+            method: Put
+            body{
+                "cpf_idoso" = 
+                "data" = "datetime"
+                "peso" = 
+                "estatura" = 
+                "per_cintura" = 
+                "per_quadril" = 
+                "per_panturrilha" =
+                "marcha6" = 
+                "hg_direita1" = 
+                "hg_esquerda1" = 
+                "hg_direita2" =
+                "hg_esquerda2" = 
+                "ir_vir1" = 
+                "ir_vir2" =         
+                }          
+        }
+        -Ver:{
+            url: 'http:localhost:127.0.0.1:8000/api/idosos_dados/atendimento/criar/'
+            query_params: get : cpf
+            method: Get
+            body{
+                "cpf_idoso" = 
+                "data" = "datetime"
+                "peso" = 
+                "estatura" = 
+                "per_cintura" = 
+                "per_quadril" = 
+                "per_panturrilha" =
+                "marcha6" = 
+                "hg_direita1" = 
+                "hg_esquerda1" = 
+                "hg_direita2" =
+                "hg_esquerda2" = 
+                "ir_vir1" = 
+                "ir_vir2" =         
+                }          
+        }
+    #
+
+
+
+            
