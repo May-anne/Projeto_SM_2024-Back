@@ -2,3 +2,5 @@ django
 djangorestframework
 environs
 mysqlclient
+corsheaders
+jwt

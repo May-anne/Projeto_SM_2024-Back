@@ -13,9 +13,11 @@ urlpatterns = [
     path('idosos_dados/cadastrar/', views_idoso.Idoso_DadosListCreate.as_view(), name="idoso_dados_cadastrar"),
     path('idosos_dados/<int:pk>/', views_idoso.Idoso_DadosRetrieveUpdateDestroy.as_view(), name="idoso_dados_retrieve_update_destroy"),
     path('idosos_dados/list/', views_idoso.Idoso_DadosList.as_view(), name='idosos_dados_list'),
+    #Parte de Atendimento
     path('idosos_dados/atendimento/criar/', views_atendimento.AtendimentoListCreate.as_view(), name="idoso_atendimento_criar"),
     path('idosos_dados/atendimento/lista/', views_atendimento.AtendimentoListByCPF.as_view(), name="idoso_atendimento_lista"),
-    path('treino/create/', views_treino.TreinoCreateAPIView.as_view(), name='treino_create'),
-    path('treino/<int:pk>/', views_treino.TreinoRetrieverUpdateDestory.as_view(), name='treino_retrieve_update_destroy'),
-    path('treino/listar/', views_treino.TreinoList.as_view(), name='treino_listar'),
+    #Treino
+    path('idosos_dados/treino/create/', views_treino.TreinoCreateAPIView.as_view(), name='treino_create'),
+    path('idosos_dados/treino/<int:pk>/', views_treino.TreinoRetrieverUpdateDestory.as_view(), name='treino_retrieve_update_destroy'),
+    path('idosos_dados/treino/listar/', views_treino.TreinoList.as_view(), name='treino_listar'),
 ]
