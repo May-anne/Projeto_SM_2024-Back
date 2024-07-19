@@ -1,8 +1,10 @@
 from django.http import JsonResponse
+from django.shortcuts import get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
+from rest_framework.decorators import api_view
 
 from .forms import ExameForm  # Certifique-se de que o caminho está correto
 from ..models import Exame 
@@ -34,6 +36,19 @@ def upload_exame_view(request):
         # Se não for uma requisição POST, retornar uma resposta de erro indicando que apenas POST é suportado
         return JsonResponse({'status': 'error', 'message': 'Apenas requisições POST são suportadas.'}, status=405)
 
+#Lista Geral
+class ExameList(APIView):
+    def get(self, request, format=None):
+        """Retorna uma lista de usuários"""
+        nome = request.query_params.get("nome", "")
+        
+        if nome:
+            users = Exame.objects.filter(nome__icontains=nome)
+        else:
+            users = Exame.objects.all()
+            
+        serializer = ExameSerializer(users, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 # Lista Resgatar Exames por cpf
@@ -50,3 +65,20 @@ class ExameListByCPF(APIView):
                 return Response({"detail": "Exames não encontrados."}, status=status.HTTP_404_NOT_FOUND)
         else:
             return Response({"detail": "CPF não fornecido."}, status=status.HTTP_400_BAD_REQUEST)
+
+
+#Apaga File escolhido
+@api_view(['DELETE'])
+def delete(request):
+    file = request.query_params.get('file')
+    if file:
+        try:
+            exame = get_object_or_404(Exame, file=file)  # Fetch the exam object based on CPF
+            exame.delete()
+            return Response({"message": "Exame deletado com sucesso"}, status=status.HTTP_204_NO_CONTENT)
+        except Exception as e:
+            return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
+    return Response({"error": "file não fornecido"}, status=status.HTTP_400_BAD_REQUEST)
+            
+        
+    
