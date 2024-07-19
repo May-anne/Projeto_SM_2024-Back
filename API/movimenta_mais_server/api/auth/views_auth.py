@@ -86,7 +86,7 @@ def sign_in(request):
 
     if password == user.senha: #verifica se a senha é correta
         # Cria o token JWT
-        token = create_token({"user_id": user.id, "nome": user.nome}, settings.SECRET_KEY)
+        token = create_token({"nome": user.nome}, settings.SECRET_KEY)
         #serializer = User_AdminSerializer(user)
         return Response({"token": token}, status=status.HTTP_200_OK) #Retorna o Token
     else:
