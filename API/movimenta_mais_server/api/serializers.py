@@ -7,7 +7,7 @@ from .models import  Treino, User_Admin, Idoso_Dados, Atendimento,Avaliacao, Exa
 class User_AdminSerializer(serializers.ModelSerializer):
     class Meta:
         model = User_Admin
-        fields = ["id","nome","senha"]
+        fields = "__all__"
         
 #Dados Idosos
 class Idoso_DadosSerializer(serializers.ModelSerializer):
