@@ -4,7 +4,7 @@ from datetime import timedelta
  #info dos users
 class User_Admin(models.Model):
    
-    nome = models.CharField(max_length=100)
+    nome = models.CharField(max_length=100,primary_key = True)
     senha = models.CharField(max_length=30)
 
     def __str__(self):
@@ -25,7 +25,7 @@ class Idoso_Dados(models.Model):
     bairro = models.CharField(max_length=50)
     cep = models.CharField(max_length=8)
     rg = models.CharField(max_length=9)
-    cpf = models.CharField(max_length=11, unique=True)
+    cpf = models.CharField(max_length=11, unique=True, primary_key = True)
     cartao_cns = models.CharField(max_length=15)
     plano_saude = models.BooleanField()
     plano_saude_qual = models.CharField(max_length=50, blank=True, null=True)  # Adicione blank=True, null=True se plano_saude for False
@@ -136,8 +136,6 @@ class Avaliacao(models.Model):
 
     def __str__(self):
         return f"{self.cpf_idoso.nome} - {self.data}"
-    
-
 #Tabela de Exames
 class Exame(models.Model):
     cpf_idoso = models.ForeignKey(Idoso_Dados, on_delete=models.CASCADE, to_field='cpf')
