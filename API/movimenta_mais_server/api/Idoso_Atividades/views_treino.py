@@ -10,6 +10,7 @@ class TreinoCreateAPIView(generics.CreateAPIView):
   queryset = Treino.objects.all()
   serializer_class = TreinoSerializer 
 
+
   def post(self, request):
     cpf = request.data.get('cpf_idoso')
     if cpf:

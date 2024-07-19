@@ -57,7 +57,7 @@ class ExameListByCPF(APIView):
         """Retorna uma lista de Exames de um idoso específico baseado no CPF"""
         cpf = request.query_params.get('cpf')
         if cpf:
-            Exames = Exame.objects.filter(cpf_idoso__cpf=cpf)
+            Exames = Exame.objects.filter(cpf=cpf)
             if Exames.exists():
                 serializer = ExameSerializer(Exames, many=True)
                 return Response(serializer.data, status=status.HTTP_200_OK)
@@ -70,15 +70,14 @@ class ExameListByCPF(APIView):
 #Apaga File escolhido
 @api_view(['DELETE'])
 def delete(request):
-    file = request.query_params.get('file')
-    if file:
+    title = request.query_params.get('title')
+    if title:
         try:
-            exame = get_object_or_404(Exame, file=file)  # Fetch the exam object based on CPF
+            exame = get_object_or_404(Exame, title=title)  # Fetch the exam object based on title
             exame.delete()
-            return Response({"message": "Exame deletado com sucesso"}, status=status.HTTP_204_NO_CONTENT)
+            return Response({"message": "Exame deletado com sucesso"}, status=status.HTTP_200_OK)
         except Exception as e:
             return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
-    return Response({"error": "file não fornecido"}, status=status.HTTP_400_BAD_REQUEST)
-            
+    return Response({"error": "title não fornecido"}, status=status.HTTP_400_BAD_REQUEST)        
         
     
