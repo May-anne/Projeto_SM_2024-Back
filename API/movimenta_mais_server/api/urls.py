@@ -27,11 +27,11 @@ urlpatterns = [
     path('idosos_dados/avaliacao/criar/', views_avaliacao.AvaliacaoCreateAPIView.as_view(), name='avaliacao_criar'),
     path('idosos_dados/avaliacao/lista/', views_avaliacao.AvaliacaoList.as_view(), name='avaliacao_listar'),
     path('idosos_dados/avaliacao/<int:pk>', views_avaliacao.AvaliacaoRetrieverUpdateDestory.as_view(), name='avaliacao_deletar_editar'),  
-    # Paths de Docs
-    path('forms/exame/upload', views_exams.upload_exame_view, name='upload_exame'),
-    path('forms/exame/listacpf', views_exams.ExameListByCPF.as_view(), name='upload_lista'),
-    path('forms/exame/lista_geral', views_exams.ExameList.as_view(), name='upload_lista'),
-     path('forms/exame/apagar', views_exams.delete, name='delete'),
+    # Paths de Forms
+    path('idosos_dados/exame/upload', views_exams.upload_exame_view, name='upload_exame'),
+    path('idosos_dados/exame/lista_cpf', views_exams.ExameListByCPF.as_view(), name='upload_lista'),
+    path('idosos_dados/exame/lista_geral', views_exams.ExameList.as_view(), name='upload_lista'),
+     path('idosos_dados/exame/apagar', views_exams.delete, name='delete'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     
     
