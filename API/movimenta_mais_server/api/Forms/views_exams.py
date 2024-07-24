@@ -55,9 +55,9 @@ class ExameList(APIView):
 class ExameListByCPF(APIView):
     def get(self, request, format=None):
         """Retorna uma lista de Exames de um idoso específico baseado no CPF"""
-        cpf = request.query_params.get('cpf')
+        cpf = request.query_params.get('cpf_idoso')
         if cpf:
-            Exames = Exame.objects.filter(cpf=cpf)
+            Exames = Exame.objects.filter(cpf_idoso=cpf)
             if Exames.exists():
                 serializer = ExameSerializer(Exames, many=True)
                 return Response(serializer.data, status=status.HTTP_200_OK)
